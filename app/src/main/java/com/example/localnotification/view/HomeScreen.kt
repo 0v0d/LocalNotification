@@ -8,10 +8,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.localnotification.viewmodel.HomeViewModel
 import com.example.localnotification.ui.theme.LocalNotificationTheme
 import com.example.localnotification.view.component.HomeScreenContent
 import com.example.localnotification.view.component.RequestPermissionContent
+import com.example.localnotification.viewmodel.HomeViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -36,23 +36,24 @@ fun HomeScreen(
             })
         }
 
-        permissionState.status.shouldShowRationale -> {
-            RequestPermissionContent(
-                message = "通知を表示するために権限が必要です。",
-                onClick = { permissionState.launchPermissionRequest() }
-            )
+            permissionState.status.shouldShowRationale -> {
+                RequestPermissionContent(
+                    message = "通知を表示するために権限が必要です。",
+                    onClick = { permissionState.launchPermissionRequest() }
+                )
+            }
+
+            else -> {
+                RequestPermissionContent(
+                    message = "通知権限が拒否されています。許可してください。",
+                    buttonText = "設定を開く",
+                    onClick = {
+                        openSettings(context)
+                    }
+                )
+            }
         }
 
-        else -> {
-            RequestPermissionContent(
-                message = "通知権限が拒否されています。許可してください。",
-                buttonText = "設定を開く",
-                onClick = {
-                    openSettings(context)
-                }
-            )
-        }
-    }
 }
 
 private fun openSettings(context: Context) {
@@ -63,10 +64,15 @@ private fun openSettings(context: Context) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
 @Composable
-fun GreetingPreview() {
+fun Preview() {
     LocalNotificationTheme {
-        HomeScreen()
+        HomeScreenContent(
+            onClick = {}
+        )
     }
 }
