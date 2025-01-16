@@ -1,7 +1,7 @@
 package com.example.localnotification.di
 
 import android.content.Context
-import com.example.localnotification.LocalNotificationManager
+import com.example.localnotification.manager.LocalNotificationManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

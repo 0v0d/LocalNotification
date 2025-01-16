@@ -1,4 +1,4 @@
-package com.example.localnotification
+package com.example.localnotification.manager
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -11,6 +11,8 @@ import android.content.pm.PackageManager
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import com.example.localnotification.MainActivity
+import com.example.localnotification.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

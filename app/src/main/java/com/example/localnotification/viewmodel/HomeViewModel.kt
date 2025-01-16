@@ -1,7 +1,7 @@
 package com.example.localnotification.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.localnotification.LocalNotificationManager
+import com.example.localnotification.manager.LocalNotificationManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
